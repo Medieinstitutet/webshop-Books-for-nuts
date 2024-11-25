@@ -3,9 +3,34 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Bokhandel</title>
+    <link rel="stylesheet" href="css.css">
 </head>
 <body>
     
+    <header class="header">
+        <h1>Bokhandeln</h1>
+    </header>
+    <main class="shop">
+        <section class="book-list">
+            <h2>Våra böcker</h2>
+            <div id="books-container" class="books">
+                <!-- Böcker laddas dynamiskt med JS -->
+            </div>
+        </section>
+        <section class="cart">
+            <h2>Varukorg</h2>
+            <div id="cart-items"></div>
+            <p id="discount-info" class="discount-info"></p>
+            <p id="shipping-info" class="shipping-info"></p>
+            <p class="total"><strong>Total:</strong> <span id="total-price">0</span> kr</p>
+            <button id="checkout-btn">Gå till kassan</button>
+        </section>
+    </main>
+    <footer>
+        <p>&copy; 2024 Bokhandeln</p>
+    </footer>
+    <script src="script.js"></script>
+
 </body>
 </html>
