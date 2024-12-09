@@ -1,15 +1,14 @@
-document.addEventListener("DOMContentLoaded", () => {
     const books = [
-        { id: 1, name: "Bok 1", price: 200, rating: 4.5, category: "Roman" },
-        { id: 2, name: "Bok 2", price: 150, rating: 4.2, category: "Fantasy" },
-        { id: 3, name: "Bok 3", price: 180, rating: 3.8, category: "Deckare" },
-        { id: 4, name: "Bok 4", price: 220, rating: 4.7, category: "Roman" },
-        { id: 5, name: "Bok 5", price: 175, rating: 4.0, category: "Sci-fi" },
-        { id: 6, name: "Bok 6", price: 300, rating: 5.0, category: "Biografi" },
-        { id: 7, name: "Bok 7", price: 130, rating: 3.5, category: "Fantasy" },
-        { id: 8, name: "Bok 8", price: 200, rating: 4.1, category: "Roman" },
-        { id: 9, name: "Bok 9", price: 140, rating: 3.8, category: "Deckare" },
-        { id: 10, name: "Bok 10", price: 190, rating: 4.4, category: "Sci-fi" },
+        { id: 1, name: "Hjärtats skuggor", price: 200, rating: 4.5, category: "Roman" },
+        { id: 2, name: "Drakens arv", price: 150, rating: 4.2, category: "Fantasy" },
+        { id: 3, name: "Mörka hemligheter", price: 180, rating: 3.8, category: "Deckare" },
+        { id: 4, name: "Vindens röster", price: 220, rating: 4.7, category: "Roman" },
+        { id: 5, name: "Stjärnornas portar", price: 175, rating: 4.0, category: "Sci-fi" },
+        { id: 6, name: "Mitt liv i ljuset", price: 300, rating: 5.0, category: "Biografi" },
+        { id: 7, name: "Månens väktare", price: 130, rating: 3.5, category: "Fantasy" },
+        { id: 8, name: "Sista sommaren vid sjön", price: 200, rating: 4.1, category: "Roman" },
+        { id: 9, name: "Mörka hemligheter", price: 140, rating: 3.8, category: "Deckare" },
+        { id: 10, name: "Framtidens världar", price: 190, rating: 4.4, category: "Sci-fi" },
     ];
 
     const cart = [];
@@ -52,7 +51,6 @@ document.addEventListener("DOMContentLoaded", () => {
             cartItemsContainer.appendChild(cartItemEl);
         });
 
-        // Handle discounts, surcharges, and shipping
         const now = new Date();
         const isMondayMorning = now.getDay() === 1 && now.getHours() < 10;
         isWeekendSurcharge =
@@ -68,8 +66,7 @@ document.addEventListener("DOMContentLoaded", () => {
             discountInfoEl.textContent = "";
         }
 
-        // Add shipping cost
-        const shipping = cartTotal > 800 ? 0 : 25 + 0.1 * cartTotal;
+        const shipping = cartTotal > 500 ? 0 : 25 + 0.1 * cartTotal;
         shippingInfoEl.textContent = shipping === 0 ? "Frakt: Gratis" : `Frakt: ${shipping.toFixed(2)} kr`;
         cartTotal += shipping;
 
@@ -90,7 +87,53 @@ document.addEventListener("DOMContentLoaded", () => {
 
             updateCart();
         }
+
+        
+    });
+     
+    // Remove books
+    cartItemsContainer.addEventListener("click", (e) => {
+        if (e.target.classList.contains("remove-button")) {
+            const id = parseInt(e.target.dataset.id);
+            const itemIndex = cart.findIndex((item) => item.id === id);
+
+            if (itemIndex !== -1) {
+                const item = cart[itemIndex];
+                if (item.quantity > 1) {
+                    item.quantity--;
+                } else {
+                    cart.splice(itemIndex, 1); 
+                }
+            }
+
+            updateCart();
+        }
     });
 
+    // Show checkout form
+    checkoutButton.addEventListener("click", () => {
+        if (cart.length === 0) {
+            alert("Din varukorg är tom!");
+        } else {
+            checkoutForm.style.display = "block";
+        }
+    });
+
+    checkoutFormFields.addEventListener("submit", (e) => {
+        e.preventDefault();
+        const name = document.getElementById("name").value;
+        const address = document.getElementById("address").value;
+
+        if (name && address) {
+            alert(`Tack för ditt köp, ${name}! Din beställning skickas till ${address}.`);
+            cart.length = 0; 
+            updateCart();
+            checkoutForm.style.display = "none"; 
+        }
+    });
+
+    cancelCheckout.addEventListener("click", () => {
+        checkoutForm.style.display = "none";
+    })
     renderBooks();
-});
+

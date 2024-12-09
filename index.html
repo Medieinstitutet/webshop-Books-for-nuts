@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="sv">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -9,24 +9,49 @@
 <body>
     
     <header class="header">
-        <h1>Bokhandeln</h1>
+        <h1>Böcker för nötter</h1>
     </header>
     <main class="shop">
+
         <section class="book-list">
             <h2>Våra böcker</h2>
-            <div id="books-container" class="books">
-                <!-- Böcker laddas dynamiskt med JS -->
-            </div>
+            <div id="books-container" class="books"></div>
         </section>
+
         <section class="cart">
             <h2>Varukorg</h2>
             <div id="cart-items"></div>
             <p id="discount-info" class="discount-info"></p>
             <p id="shipping-info" class="shipping-info"></p>
             <p class="total"><strong>Total:</strong> <span id="total-price">0</span> kr</p>
-            <button id="checkout-btn">Gå till kassan</button>
+            <button id="checkout-button">Gå till kassan</button>
         </section>
-    </main>
+        
+        <section class="Sort">
+            <label for="sort-options">Sortera efter:</label>
+            <select id="sort-options">
+                <option value="name">Namn (A-Ö)</option>
+                <option value="price">Pris (lägst-högst)</option>
+                <option value="category">Kategori (A-Ö)</option>
+                <option value="rating">Rating (högst-lägst)</option>
+            </select>
+            <button id="sort-button">Sortera</button>
+        </section>
+
+        <div id="checkout-form" style="display: none;">
+            <h3>Fyll i dina uppgifter</h3>
+            <form id="checkout-form-fields">
+                <label for="name">Namn:</label>
+                <input type="text" id="name" name="name" required><br><br>
+        
+                <label for="address">Adress:</label>
+                <input type="text" id="address" name="address" required><br><br>
+        
+                <button type="submit">Slutför köp</button>
+                <button type="button" id="cancel-checkout">Avbryt</button>
+            </form>
+        </div>
+    </main> 
     <footer>
         <p>&copy; 2024 Bokhandeln</p>
     </footer>

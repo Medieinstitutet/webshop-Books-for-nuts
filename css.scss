@@ -6,8 +6,8 @@ body {
 }
 
 .header {
-    background: #333;
-    color: #fff;
+    background: #007BFF;
+    color: #030303;
     text-align: center;
     padding: 1rem;
 }
@@ -62,4 +62,16 @@ body {
             }
         }
     }
-}
+
+    .remove-btn {
+        background: #ff4d4f;
+        color: white;
+        border: none;
+        padding: 0.3rem 0.5rem;
+        border-radius: 4px;
+        cursor: pointer;
+    
+        &:hover {
+            background: #d9363e;
+        }; 
+    }
