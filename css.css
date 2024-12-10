@@ -7,7 +7,7 @@ body {
 
 .header {
   background: #007BFF;
-  color: #fff;
+  color: #f9f9f9;
   text-align: center;
   padding: 1rem;
 }
@@ -53,6 +53,7 @@ body {
   padding: 0.5rem 1rem;
   border-radius: 5px;
   cursor: pointer;
+  position: static;
 }
 .shop .books .book-item button:hover {
   background: #0056b3;

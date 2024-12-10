@@ -11,11 +11,22 @@
     <header class="header">
         <h1>Böcker för nötter</h1>
     </header>
+
     <main class="shop">
 
         <section class="book-list">
             <h2>Våra böcker</h2>
             <div id="books-container" class="books"></div>
+            <section class="Sort">
+                <label for="sort-options">Sortera efter:</label>
+                <select id="sort-options">
+                    <option value="name">Namn (A-Ö)</option>
+                    <option value="price">Pris (lägst-högst)</option>
+                    <option value="category">Kategori (A-Ö)</option>
+                    <option value="rating">Rating (högst-lägst)</option>
+                </select>
+                <button id="sort-button">Sortera</button>
+            </section>
         </section>
 
         <section class="cart">
@@ -24,36 +35,25 @@
             <p id="discount-info" class="discount-info"></p>
             <p id="shipping-info" class="shipping-info"></p>
             <p class="total"><strong>Total:</strong> <span id="total-price">0</span> kr</p>
-            <button id="checkout-button">Gå till kassan</button>
-        </section>
-        
-        <section class="Sort">
-            <label for="sort-options">Sortera efter:</label>
-            <select id="sort-options">
-                <option value="name">Namn (A-Ö)</option>
-                <option value="price">Pris (lägst-högst)</option>
-                <option value="category">Kategori (A-Ö)</option>
-                <option value="rating">Rating (högst-lägst)</option>
-            </select>
-            <button id="sort-button">Sortera</button>
+            <button id="checkout-btn">Gå till kassan</button>
+            <div id="checkout-form" style="display: none;">
+                <h3>Fyll i dina uppgifter</h3>
+                <form id="checkout-form-fields">
+                    <label for="name">Namn:</label>
+                    <input type="text" id="name" name="name" required><br><br>
+            
+                    <label for="address">Adress:</label>
+                    <input type="text" id="address" name="address" required><br><br>
+            
+                    <button type="submit">Slutför köp</button>
+                    <button type="button" id="cancel-checkout">Avbryt</button>
+                </form>
+            </div>
         </section>
 
-        <div id="checkout-form" style="display: none;">
-            <h3>Fyll i dina uppgifter</h3>
-            <form id="checkout-form-fields">
-                <label for="name">Namn:</label>
-                <input type="text" id="name" name="name" required><br><br>
-        
-                <label for="address">Adress:</label>
-                <input type="text" id="address" name="address" required><br><br>
-        
-                <button type="submit">Slutför köp</button>
-                <button type="button" id="cancel-checkout">Avbryt</button>
-            </form>
-        </div>
     </main> 
     <footer>
-        <p>&copy; 2024 Bokhandeln</p>
+        <p>&copy; 2024 Böcker för nötter</p>
     </footer>
     <script src="script.js"></script>
 
