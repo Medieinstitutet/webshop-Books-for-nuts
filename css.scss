@@ -55,9 +55,7 @@ body {
                 padding: 0.5rem 1rem;
                 border-radius: 5px;
                 cursor: pointer;
-                position: static;
                 
-
                 &:hover {
                     background: #0056b3;
                 }
@@ -65,3 +63,17 @@ body {
         }
     }
 }    
+
+footer{
+    text-align: center;
+    position: static;
+    font-weight: bold;
+}
+
+#checkout-form {
+    display: none;
+}
+
+#confirmation-message {
+    display: none;
+}

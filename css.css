@@ -53,8 +53,21 @@ body {
   padding: 0.5rem 1rem;
   border-radius: 5px;
   cursor: pointer;
-  position: static;
 }
 .shop .books .book-item button:hover {
   background: #0056b3;
-}/*# sourceMappingURL=css.css.map */
+}
+
+footer {
+  text-align: center;
+  position: static;
+  font-weight: bold;
+}
+
+#checkout-form {
+  display: none;
+}
+
+#confirmation-message {
+  display: none;
+}

@@ -3,7 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Bokhandel</title>
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self'; img-src 'self';">
+    <meta name="description" content="Den här sidan innehåller en webbshop där man kan beställa hem olika sorter böcker, sidan är skapad av David Brunni.">
+    <title>Böcker för nötter</title>
     <link rel="stylesheet" href="css.css">
 </head>
 <body>
@@ -17,7 +19,7 @@
         <section class="book-list">
             <h2>Våra böcker</h2>
             <div id="books-container" class="books"></div>
-            <section class="Sort">
+            <div class="Sort">
                 <label for="sort-options">Sortera efter:</label>
                 <select id="sort-options">
                     <option value="name">Namn (A-Ö)</option>
@@ -26,7 +28,7 @@
                     <option value="rating">Rating (högst-lägst)</option>
                 </select>
                 <button id="sort-button">Sortera</button>
-            </section>
+            </div>
         </section>
 
         <section class="cart">
@@ -39,18 +41,70 @@
             <div id="checkout-form" style="display: none;">
                 <h3>Fyll i dina uppgifter</h3>
                 <form id="checkout-form-fields">
-                    <label for="name">Namn:</label>
-                    <input type="text" id="name" name="name" required><br><br>
-            
-                    <label for="address">Adress:</label>
+                    <label for="first-name">Förnamn:</label>
+                    <input type="text" id="first-name" name="first-name" required><br><br>
+                    
+                    <label for="last-name">Efternamn:</label>
+                    <input type="text" id="last-name" name="last-name" required><br><br>
+    
+                    <label for="address">Adress (gata):</label>
                     <input type="text" id="address" name="address" required><br><br>
-            
-                    <button type="submit">Slutför köp</button>
-                    <button type="button" id="cancel-checkout">Avbryt</button>
+                    
+                    <label for="postcode">Postnummer:</label>
+                    <input type="text" id="postcode" name="postcode" required pattern="^[0-9]{5}$"><br><br>
+    
+                    <label for="city">Postort:</label>
+                    <input type="text" id="city" name="city" required><br><br>
+    
+                    <label for="door-code">Ev. portkod:</label>
+                    <input type="text" id="door-code" name="door-code"><br><br>
+    
+                    <label for="phone">Telefon (mobil):</label>
+                    <input type="tel" id="phone" name="phone" required pattern="^07[0-9]{8}$"><br><br>
+    
+                    <label for="email">E-postadress:</label>
+                    <input type="email" id="email" name="email" required><br><br>
+    
+                    <label>Betalsätt:</label><br>
+                    <input type="radio" id="payment-card" name="payment-method" value="card" checked>
+                    <label for="payment-card">Kort</label><br>
+                    <input type="radio" id="payment-invoice" name="payment-method" value="invoice">
+                    <label for="payment-invoice">Faktura</label><br><br>
+    
+                    <div id="card-fields">
+                        <label for="card-number">Kortnummer:</label>
+                        <input type="text" id="card-number" name="card-number"><br><br>
+                        
+                        <label for="expiry">Datum/år:</label>
+                        <input type="text" id="expiry" name="expiry"><br><br>
+                        
+                        <label for="cvc">CVC:</label>
+                        <input type="text" id="cvc" name="cvc"><br><br>
+                    </div>
+    
+                    <div id="invoice-fields" style="display: none;">
+                        <label for="personnummer">Personnummer:</label>
+                        <input type="text" id="personnummer" name="personnummer" pattern="^(19|20)?[0-9]{6}[-]?[0-9]{4}$">
+                        <span id="personnummer-error" style="display: none; color: red;">Personnummer måste vara korrekt.</span>
+                        <br><br>
+                    </div>
+    
+                    <label for="discount-code">Rabattkod:</label>
+                    <input type="text" id="discount-code" name="discount-code"><br><br>
+    
+                    <input type="checkbox" id="data-agree" required>
+                    <label for="data-agree">Godkänner behandling av personuppgifter</label><br><br>
+    
+                    <input type="checkbox" id="newsletter" checked>
+                    <label for="newsletter">Beställ nyhetsbrev</label><br><br>
+    
+                    <button type="submit" id="submit-btn" disabled>Slutför köp</button>
+                    <button type="button" id="reset-btn">Rensa beställning</button>
+                    <button type="button" id="cancel-btn">Avbryt</button>
                 </form>
             </div>
-        </section>
-
+            <p id="confirmation-message" style="display: none; color: green;">Tack för din beställning! Leverans tar 1-3 arbetsdagar.</p>
+        </section>    
     </main> 
     <footer>
         <p>&copy; 2024 Böcker för nötter</p>
