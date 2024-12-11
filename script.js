@@ -37,7 +37,7 @@ const paymentInvoice = document.getElementById("payment-invoice");
 const cardFields = document.getElementById("card-fields");
 const invoiceFields = document.getElementById("invoice-fields");
 
-// Dölj formulär och bekräftelsemeddelande vid sidladdning
+
 checkoutForm.style.display = "none";
 confirmationMessage.style.display = "none";
 
@@ -60,7 +60,7 @@ const renderBooks = (booksToRender) => {
 
 // Sortera böcker
 const sortBooks = (criteria) => {
-    let sortedBooks = [...books]; // Skapa en kopia av böckerna
+    let sortedBooks = [...books]; 
     if (criteria === 'name') {
         sortedBooks.sort((a, b) => a.name.localeCompare(b.name));
     } else if (criteria === 'price') {
@@ -81,8 +81,8 @@ sortButton.addEventListener('click', () => {
 
 // Uppdatera varukorgen
 const updateCart = () => {
-    cartItemsContainer.innerHTML = ""; // Rensa tidigare varukorg
-    cartTotal = 0; // Nollställ totalen
+    cartItemsContainer.innerHTML = ""; 
+    cartTotal = 0; 
 
     if (cart.length === 0) {
         cartItemsContainer.innerHTML = "<p>Din varukorg är tom.</p>";
@@ -125,7 +125,7 @@ const updateCart = () => {
     shippingInfoEl.textContent = shipping === 0 ? "Frakt: Gratis" : `Frakt: ${shipping.toFixed(2)} kr`;
     cartTotal += shipping;
 
-    // Uppdatera totalen
+   
     totalPriceEl.textContent = cartTotal.toFixed(2);
 };
 
@@ -135,50 +135,49 @@ booksContainer.addEventListener("click", (e) => {
         const id = parseInt(e.target.dataset.id);
         const book = books.find((b) => b.id === id);
 
-        // Kontrollera om varan redan finns i varukorgen
         const existingItem = cart.find((item) => item.id === id);
         if (existingItem) {
-            // Om varan finns, öka mängden
+           
             existingItem.quantity++;
         } else {
-            // Om varan inte finns, lägg till den i varukorgen med mängd 1
+            
             cart.push({ ...book, quantity: 1 });
         }
 
-        // Uppdatera varukorgen
+        
         updateCart();
     }
 });
 
-// Ta bort varor från varukorgen
+
 cartItemsContainer.addEventListener("click", (e) => {
     if (e.target.classList.contains("remove-item")) {
         const index = parseInt(e.target.dataset.index);
-        cart.splice(index, 1); // Ta bort varan
-        updateCart(); // Uppdatera varukorgen
+        cart.splice(index, 1); 
+        updateCart(); 
     }
 });
 
-// Visa formuläret när användaren klickar på "Gå till kassan"
+
 checkoutBtn.addEventListener("click", () => {
-    checkoutForm.style.display = "block"; // Visa formuläret
-    confirmationMessage.style.display = "none"; // Dölj bekräftelsen om den syns
+    checkoutForm.style.display = "block"; 
+    confirmationMessage.style.display = "none"; 
 });
 
-// När användaren avbryter kassan, dölja formuläret
+
 cancelCheckoutBtn.addEventListener("click", () => {
     checkoutForm.style.display = "none";
-    confirmationMessage.style.display = "none"; // Dölj eventuella tidigare meddelanden
+    confirmationMessage.style.display = "none"; n
 });
 
-// När användaren skickar formuläret, visa bekräftelsemeddelandet
+
 form.addEventListener("submit", (e) => {
     e.preventDefault();
-    confirmationMessage.style.display = "block"; // Visa tackmeddelandet
-    checkoutForm.style.display = "none"; // Dölj formuläret efter att beställningen har slutförts
+    confirmationMessage.style.display = "block"; 
+    checkoutForm.style.display = "none"; 
 });
 
-// Validera formuläret
+
 const validateForm = () => {
     const allFields = form.querySelectorAll("input[required]");
     let valid = true;
@@ -201,7 +200,7 @@ const validateForm = () => {
 
 form.addEventListener("input", validateForm);
 
-// Hantera betalmetod
+
 paymentCard.addEventListener("change", () => {
     cardFields.style.display = "block";
     invoiceFields.style.display = "none";
@@ -214,7 +213,7 @@ paymentInvoice.addEventListener("change", () => {
     validateForm();
 });
 
-// Återställ formuläret
+
 resetBtn.addEventListener("click", () => {
     form.reset();
     confirmationMessage.style.display = "none";
@@ -223,7 +222,7 @@ resetBtn.addEventListener("click", () => {
     validateForm();
 });
 
-// Avbryt formulär
+
 cancelBtn.addEventListener("click", () => {
     form.reset();
     confirmationMessage.style.display = "none";
