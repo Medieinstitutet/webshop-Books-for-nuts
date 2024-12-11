@@ -1,0 +1,73 @@
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.header {
+  background: #007BFF;
+  color: #f9f9f9;
+  text-align: center;
+  padding: 1rem;
+}
+
+.shop {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  padding: 1rem;
+}
+.shop .book-list,
+.shop .cart {
+  flex: 1 1 45%;
+  margin: 1rem;
+  padding: 1rem;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  background-color: #f9f9f9;
+}
+.shop .book-list h2,
+.shop .cart h2 {
+  margin-top: 0;
+}
+.shop .books {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: 1rem;
+}
+.shop .books .book-item {
+  border: 1px solid #ddd;
+  padding: 1rem;
+  border-radius: 5px;
+  text-align: center;
+}
+.shop .books .book-item img {
+  max-width: 100px;
+  margin-bottom: 0.5rem;
+}
+.shop .books .book-item button {
+  background: #007BFF;
+  color: white;
+  border: none;
+  padding: 0.5rem 1rem;
+  border-radius: 5px;
+  cursor: pointer;
+}
+.shop .books .book-item button:hover {
+  background: #0056b3;
+}
+
+footer {
+  text-align: center;
+  position: static;
+  font-weight: bold;
+}
+
+#checkout-form {
+  display: none;
+}
+
+#confirmation-message {
+  display: none;
+}/*# sourceMappingURL=css.css.map */
